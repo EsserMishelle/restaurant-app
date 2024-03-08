@@ -8,6 +8,7 @@ export default function Footer() {
           <div>
             <img
               src="https://res.cloudinary.com/dxh60x8dq/image/upload/v1709282323/Ramen%20Time%20Images/contact-us-icon-black-2_g4wfyk.png"
+              alt="footer img"
               style={{ height: "30px", marginRight: "30px", marginTop: "7px" }}
               className={styles.phone}
             ></img>
@@ -22,8 +23,12 @@ export default function Footer() {
           <a
             href="https://www.facebook.com/RamenTalkwilliamsburg"
             target="_blank"
+            rel="noopener noreferrer"
           >
-            <img src="https://res.cloudinary.com/dxh60x8dq/image/upload/v1709275661/Ramen%20Time%20Images/icons8-facebook-50_fuaeot.png"></img>
+            <img
+              src="https://res.cloudinary.com/dxh60x8dq/image/upload/v1709275661/Ramen%20Time%20Images/icons8-facebook-50_fuaeot.png"
+              alt="footer img"
+            ></img>
           </a>
         </div>
 
