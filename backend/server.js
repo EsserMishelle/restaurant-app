@@ -12,7 +12,7 @@ const ensureLoggedIn = require("./config/ensureLoggedIn");
 const app = express();
 
 const corsOptions = {
-  origin: "https://ramen-talk.netlify.app/",
+  origin: "https://ramen-talk.netlify.app",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
 };
