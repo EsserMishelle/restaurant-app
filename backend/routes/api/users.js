@@ -11,7 +11,7 @@ router.post("/login", usersCtrl.logIn);
 
 router.get("/login", usersCtrl.logIn);
 
-router.get("/", usersCtrl.create);
+router.get("/", usersCtrl.login);
 
 // router.get("/login", (req, res) => {
 //     res.render("/login", usersCtrl.logIn);
