@@ -10,6 +10,7 @@ router.post("/", usersCtrl.create);
 router.post("/login", usersCtrl.logIn);
 
 router.get("/", usersCtrl.create);
+
 router.get("/login", (req, res) => {
   res.render("/login");
 });
