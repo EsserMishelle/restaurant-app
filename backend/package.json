@@ -4,10 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "npm i",
     "test": "nodemon",
     "start": "node server.js",
     "seed": "node config/seed",
+    "build": "npm install",
     "dev": "nodemon server.js"
   },
   "keywords": [],
