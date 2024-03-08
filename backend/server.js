@@ -23,9 +23,7 @@ app.use(logger("dev"));
 app.use(express.json());
 
 // Middleware to verify token and assign user object of payload to req.user.
-// Be sure to mount before routes
-// Middleware to verify token and assign user object of payload to req.user.
-// Be sure to mount before routes
+
 app.use((req, res, next) => {
   console.log("Middleware: checkToken"); // Add this line
   require("./config/checkToken")(req, res, next);
@@ -36,18 +34,11 @@ app.use((req, res, next) => {
 // app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, "build")));
 
-//"Catch All" Route
-// Put API routes here, before the "catch all" route
-
+// API routes
+console.log("Before API routes"); // Add this line
 app.use("/api/users", require("./routes/api/users"));
-
-// Protect the API routes below from anonymous users
-// const ensureLoggedIn = require('./config/ensureLoggedIn');
 app.use("/api/items", require("./routes/api/items"));
-
 app.use("/api/orders", ensureLoggedIn, require("./routes/api/orders"));
-
-//Admin routes
 app.use("/api/admin", ensureLoggedIn, require("./routes/api/adminRoutes"));
 
 // Health Check Endpoint
@@ -60,11 +51,12 @@ app.get("/health", (req, res) => {
     res.status(500).send("API is up but MongoDB is disconnected.");
   }
 });
+console.log("After API routes");
 
-// The "catch all" route (note the *) is necessary
-
+console.log("Before catch-all route"); // Add this line
 app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+  console.log("Handling catch-all route");
+  res.sendFile(path.join(process.cwd(), "frontend", "build", "index.html"));
 });
 // Configure to use port 3001 instead of 3000 during
 // development to avoid collision with React's dev server

@@ -1,6 +1,6 @@
 //controllers/api/admin.js
 
-const User = require('../../models/User'); 
+const User = require("../../models/User");
 
 const adminController = {
   // Get a list of all users
@@ -17,9 +17,13 @@ const adminController = {
   updateUserRole: async (req, res) => {
     const { userId, newRole } = req.body;
     try {
-      const user = await User.findByIdAndUpdate(userId, { role: newRole }, { new: true });
+      const user = await User.findByIdAndUpdate(
+        userId,
+        { role: newRole },
+        { new: true }
+      );
       if (!user) {
-        return res.status(404).json({ message: 'User not found' });
+        return res.status(404).json({ message: "User not found" });
       }
       res.json(user);
     } catch (error) {
@@ -33,7 +37,7 @@ const adminController = {
       const { userId } = req.params;
       const user = await User.findByIdAndDelete(userId);
       if (!user) {
-        return res.status(404).json({ message: 'User not found' });
+        return res.status(404).json({ message: "User not found" });
       }
       res.status(204).send(); // No Content
     } catch (error) {

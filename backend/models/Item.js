@@ -17,7 +17,7 @@
 
 // module.exports = mongoose.model('Item', itemSchema);
 
-const mongoose = require('mongoose');
-require('./Category');
-const ItemSchema = require('./ItemSchema');
-module.exports = mongoose.model('Item', ItemSchema);
+const mongoose = require("mongoose");
+require("./Category");
+const ItemSchema = require("./ItemSchema");
+module.exports = mongoose.model("Item", ItemSchema);

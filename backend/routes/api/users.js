@@ -1,23 +1,34 @@
-// routes/api/users.js
+// ./routes/api/users.js
 
 const express = require("express");
 const router = express.Router();
 const usersCtrl = require("../../controllers/api/users");
 
 // POST /api/users
-router.post("/", usersCtrl.create);
-//POST /api/users/login
-router.post("/login", usersCtrl.logIn);
+router.post("/", function (req, res) {
+  console.log("Inside POST /api/users route");
+  usersCtrl.create(req, res);
+  console.log("POST /api/users route completed");
+});
 
-// router.get("/login", usersCtrl.logIn);
-
-// router.get("/", usersCtrl.login);
-
-// router.get("/login", (req, res) => {
-//     res.render("/login", usersCtrl.logIn);
-//   });
-//   router.get("/signup", (req, res) => {
-//     res.render("/", usersCtrl.create);
-//   });
+// POST /api/users/login
+router.post("/login", function (req, res) {
+  console.log("Inside POST /api/users/login route");
+  usersCtrl.logIn(req, res);
+  console.log("POST /api/users/login route completed");
+});
 
 module.exports = router;
+
+// routes/api/users.js
+
+// const express = require("express");
+// const router = express.Router();
+// const usersCtrl = require("../../controllers/api/users");
+
+// // POST /api/users
+// router.post("/", usersCtrl.create);
+// //POST /api/users/login
+// router.post("/login", usersCtrl.logIn);
+
+// module.exports = router;
