@@ -1,10 +1,11 @@
+const express = require("express");
+const logger = require("morgan");
+const cors = require("cors");
 require("dotenv").config();
 //connect to the database
 require("./config/database");
-const cors = require("cors");
-const express = require("express");
+
 const path = require("path");
-const logger = require("morgan");
 const ensureLoggedIn = require("./config/ensureLoggedIn");
 // const checkRole = require('./config/checkRole')
 
@@ -17,11 +18,10 @@ const corsOptions = {
 };
 
 // Enable CORS with the specified options
-app.use(cors(corsOptions));
 
 app.use(logger("dev"));
 app.use(express.json());
-
+app.use(cors(corsOptions));
 // Middleware to verify token and assign user object of payload to req.user.
 
 app.use((req, res, next) => {
