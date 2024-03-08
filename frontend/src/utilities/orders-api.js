@@ -1,6 +1,7 @@
 import sendRequest from "./send-request";
 
-const BASE_URL = "https://restaurant-app-nnv7.onrender.com/api/orders";
+const BASE_URL = "/api/orders";
+// const BASE_URL = "https://restaurant-app-nnv7.onrender.com/api/orders";
 
 // Retrieve an unpaid order for the logged in user
 export function getCart() {
