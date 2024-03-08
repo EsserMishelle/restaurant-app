@@ -26,7 +26,8 @@ export default async function sendRequest(url, method = "GET", payload = null) {
   options.credentials = "include";
 
   // Update the URL to the correct absolute backend URL
-  const backendURL = "https://restaurant-app-nnv7.onrender.com"; // Replace with your Render backend URL
+  const backendURL = "https://restaurant-app-nnv7.onrender.com";
+
   const absoluteURL = `${backendURL}${url}`;
 
   const res = await fetch(absoluteURL, options);
