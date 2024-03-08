@@ -9,12 +9,15 @@ router.post("/", usersCtrl.create);
 //POST /api/users/login
 router.post("/login", usersCtrl.logIn);
 
+router.get("/login", usersCtrl.logIn);
+
 router.get("/", usersCtrl.create);
 
-router.get("/login", (req, res) => {
-  res.render("/login");
-});
-router.get("/signup", (req, res) => {
-  res.render("/signup");
-});
+// router.get("/login", (req, res) => {
+//     res.render("/login", usersCtrl.logIn);
+//   });
+//   router.get("/signup", (req, res) => {
+//     res.render("/", usersCtrl.create);
+//   });
+
 module.exports = router;
