@@ -7,7 +7,7 @@
     "build": "npm i",
     "test": "nodemon",
     "start": "node server.js",
-    "seed":"node config/seed",
+    "seed": "node config/seed",
     "dev": "nodemon server.js"
   },
   "keywords": [],
@@ -15,6 +15,8 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.1",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",

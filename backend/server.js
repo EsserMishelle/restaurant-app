@@ -1,21 +1,35 @@
 require("dotenv").config();
 //connect to the database
 require("./config/database");
+const cors = require("cors");
 const express = require("express");
 const path = require("path");
-// const favicon = require('serve-favicon');
 const logger = require("morgan");
 const ensureLoggedIn = require("./config/ensureLoggedIn");
 // const checkRole = require('./config/checkRole')
 
 const app = express();
 
+const corsOptions = {
+  origin: "https://ramen-talk.netlify.app/",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+};
+
+// Enable CORS with the specified options
+app.use(cors(corsOptions));
+
 app.use(logger("dev"));
 app.use(express.json());
 
 // Middleware to verify token and assign user object of payload to req.user.
 // Be sure to mount before routes
-app.use(require("./config/checkToken"));
+// Middleware to verify token and assign user object of payload to req.user.
+// Be sure to mount before routes
+app.use((req, res, next) => {
+  console.log("Middleware: checkToken"); // Add this line
+  require("./config/checkToken")(req, res, next);
+});
 
 // Configure both serve-favicon & static middleware
 // to serve from the production 'build' folder
