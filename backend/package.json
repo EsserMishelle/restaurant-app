@@ -7,7 +7,8 @@
     "build": "npm i",
     "test": "nodemon",
     "start": "node server.js",
-    "seed":"node config/seed"
+    "seed":"node config/seed",
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",

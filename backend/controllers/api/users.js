@@ -12,6 +12,7 @@ function createJWT(user) {
 }
 
 async function create(req, res) {
+  console.log("Inside create route handler");
   try {
     // Add the user to the database
     const user = await User.create(req.body);
@@ -26,8 +27,10 @@ async function create(req, res) {
     // 400 = Bad Request
     res.status(400).json(err);
   }
+  console.log("create route handler completed");
 }
 async function logIn(req, res) {
+  console.log("Inside logIn route handler");
   try {
     //Find the email the user typed in the frontend in our database
     const user = await User.findOne({ email: req.body.email });
@@ -38,8 +41,8 @@ async function logIn(req, res) {
   } catch {
     res.status(400).json("Bad Credentials");
   }
+  console.log("logIn route handler completed");
 }
-
 
 module.exports = {
   create,
