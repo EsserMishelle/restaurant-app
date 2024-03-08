@@ -9,9 +9,9 @@ router.post("/", usersCtrl.create);
 //POST /api/users/login
 router.post("/login", usersCtrl.logIn);
 
-router.get("/login", usersCtrl.logIn);
+// router.get("/login", usersCtrl.logIn);
 
-router.get("/", usersCtrl.login);
+// router.get("/", usersCtrl.login);
 
 // router.get("/login", (req, res) => {
 //     res.render("/login", usersCtrl.logIn);
