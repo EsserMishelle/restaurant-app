@@ -55,12 +55,13 @@ function MenuItemDetail({ item, onClose }) {
               alt={item.name}
               style={{ maxWidth: "100%", height: "auto" }}
             />
-            <button onClick={onClose}>Close</button>
           </>
         )}
       </div>
       {/* <button onClick={handleAddToOrder}>Add to Cart</button> */}
-      <button onClick={handleBackToMenu}>Back to Menu</button>
+      <button onClick={handleBackToMenu} style={{ height: "20px" }}>
+        Back to Menu
+      </button>
     </div>
   );
 }

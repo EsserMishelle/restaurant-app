@@ -36,7 +36,6 @@ export default function NewOrder({ user, setUser }) {
     getCart();
   }, []);
 
-  /*-- Event Handlers --*/
   async function handleAddToOrder(itemId) {
     const updatedCart = await ordersAPI.addItemToCart(itemId);
     setCart(updatedCart);

@@ -16,7 +16,9 @@ export default function Modal({ isOpen, onClose, children }) {
       }}
     >
       <div style={{ backgroundColor: "#fff", padding: 20 }}>
-        <button onClick={onClose}>X</button>
+        <button onClick={onClose} style={{ height: "20px" }}>
+          X
+        </button>
         {children}
       </div>
     </div>
