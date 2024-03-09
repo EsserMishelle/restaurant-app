@@ -44,7 +44,7 @@ function Menu() {
         ))}
       </ul>
       {isModalOpen && (
-        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <Modal onClose={() => setIsModalOpen(false)}>
           <MenuItemDetail item={selectedItem} />
         </Modal>
       )}

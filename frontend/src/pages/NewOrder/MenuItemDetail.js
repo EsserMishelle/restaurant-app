@@ -15,7 +15,7 @@ function MenuItemDetail({ item, onClose }) {
   useEffect(() => {
     const fetchItem = async () => {
       try {
-        // console.log(`Fetching item with ID: ${itemId}`);
+        console.log(`Fetching item with ID: ${itemId}`);
         const fetchedItem = await getById(itemId);
         // console.log("Fetched item:", fetchedItem);
         setItem(fetchedItem);
@@ -25,6 +25,7 @@ function MenuItemDetail({ item, onClose }) {
     };
     fetchItem();
   }, [itemId]);
+
   function handleBackToMenu() {
     navigate("/menu");
   }
