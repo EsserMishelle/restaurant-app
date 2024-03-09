@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 import { getAll } from "../../utilities/items-api";
 import { Link } from "react-router-dom";

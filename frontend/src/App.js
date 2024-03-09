@@ -91,7 +91,7 @@ function App() {
               }
             />
             {/*updated by Mishelle --added but commented out after fixing the modal*/}
-            {/* <Route path="/menu/:itemId" element={<MenuItemDetail />} /> */}
+            <Route path="/menu/:itemId" element={<MenuItemDetail />} />
             {/*  */}
 
             <Route path="/users" element={<Auth setUser={setUser} />} />

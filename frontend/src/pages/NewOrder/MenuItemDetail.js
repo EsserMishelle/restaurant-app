@@ -1,14 +1,17 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getById } from "../../utilities/items-api";
 import * as ordersAPI from "../../utilities/orders-api";
 
-function MenuItemDetail({ item, onClose }) {
+function MenuItemDetail({ item: propItem, onClose }) {
   const { itemId } = useParams();
   const navigate = useNavigate();
-  const [item, setItem] = useState(null);
+  // const [item, setItem] = useState(null);
   const [cart, setCart] = useState(null);
-  async function handleAddToOrder(itemId) {
+  const [itemDetails, setItemDetails] = useState(null);
+
+  async function handleAddToOrder() {
     const updatedCart = await ordersAPI.addItemToCart(itemId);
     setCart(updatedCart);
   }
@@ -18,20 +21,21 @@ function MenuItemDetail({ item, onClose }) {
         console.log(`Fetching item with ID: ${itemId}`);
         const fetchedItem = await getById(itemId);
         // console.log("Fetched item:", fetchedItem);
-        setItem(fetchedItem);
+        setItemDetails(fetchedItem);
       } catch (error) {
         console.error("Error fetching menu item details:", error);
       }
     };
-    fetchItem();
-  }, [itemId]);
+    if (!propItem) fetchItem(); // Only fetch if propItem isn't provided
+  }, [itemId, propItem]);
 
   function handleBackToMenu() {
     navigate("/menu");
   }
-  if (!item) {
+  if (!itemDetails) {
     return <div>No menu item found</div>;
   }
+  const item = itemDetails || propItem;
   return (
     <div>
       <div>
