@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { getAll } from "../../utilities/items-api";
 import { Link } from "react-router-dom";
 import Modal from "../../components/Modal/MenuItemModal";
-import MenuItemDetails from "./MenuItemDetails";
-import MenuItemDetail from "./MenuItemDetails";
+import MenuItemDetail from "./MenuItemDetail";
 
 function Menu() {
   // State to store the fetched items
@@ -24,6 +23,7 @@ function Menu() {
 
     fetchItems();
   }, []); // The empty array ensures this effect runs only once after initial render
+
   const handleItemClick = (item) => {
     console.log("Item clicked", item);
     setSelectedItem(item);
@@ -43,22 +43,11 @@ function Menu() {
           </li>
         ))}
       </ul>
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        {/* updated by Mishelle */}
-        {/* {selectedItem && (
-          <div>
-            <h2>{selectedItem.name}</h2>
-            <p>Description: {selectedItem.description}</p>
-            <p>Price: {selectedItem.price}</p>
-            <img
-              src={selectedItem.img}
-              alt={selectedItem.name}
-              style={{ maxWidth: "100%", height: "auto" }}
-            />
-          </div>
-        )} */}
-        {selectedItem && <MenuItemDetail item={selectedItem} />}
-      </Modal>
+      {isModalOpen && (
+        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+          <MenuItemDetail item={selectedItem} />
+        </Modal>
+      )}
     </div>
   );
 }

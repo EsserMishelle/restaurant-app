@@ -14,7 +14,7 @@ import MenuListItem from "./components/MenuListItem/MenuListItem";
 import Menu from "./pages/NewOrder/Menu";
 import CategoryList from "./components/CategoryList/CategoryList";
 import LineItem from "./components/LineItem/LineItem";
-import MenuItemDetail from "./pages/NewOrder/MenuItemDetails";
+import MenuItemDetail from "./pages/NewOrder/MenuItemDetail";
 import MenuList from "./components/MenuList/MenuList";
 import OrderHistory from "./pages/OrderHistory/OrderHistory";
 import AdminDash from "./pages/AdminDash/AdminDash";
@@ -23,7 +23,7 @@ function App() {
   const [activeCat, setActiveCat] = useState("");
   const [menuItems, setMenuItems] = useState([]);
   const categoriesRef = useRef([]);
-const navigate = useNavigate();
+  const navigate = useNavigate();
   useEffect(function () {
     async function getItems() {
       const items = await itemsAPI.getAll();
@@ -37,17 +37,15 @@ const navigate = useNavigate();
     getItems();
   }, []);
   useEffect(() => {
-    if (user && user.role === 'admin') {
-      navigate('/admin');
-    } else if (user && user.role === 'customer') {
-      navigate('/orders/new'); 
+    if (user && user.role === "admin") {
+      navigate("/admin");
+    } else if (user && user.role === "customer") {
+      navigate("/orders/new");
     } else if (!user) {
-      navigate('/');
+      navigate("/");
     }
     // Add dependencies array to re-run effect when user changes
   }, [user, navigate]);
-
-
 
   return (
     <div className="App">
@@ -57,42 +55,48 @@ const navigate = useNavigate();
         <Route path="/users" element={<Auth setUser={setUser} />} />
         {user ? (
           <>
-           {user.role === 'admin' && <Route path="/admin" element={<AdminDash />} />}
-            <Route path="/orders/new" element={<NewOrder user={user} setUser={setUser} />} />
-            <Route path="/history" element={<OrderHistory user={user} setUser={setUser} />} />
-                   
+            {user.role === "admin" && (
+              <Route path="/admin" element={<AdminDash />} />
+            )}
+            <Route
+              path="/orders/new"
+              element={<NewOrder user={user} setUser={setUser} />}
+            />
+            <Route
+              path="/history"
+              element={<OrderHistory user={user} setUser={setUser} />}
+            />
           </>
-        ):( <>
-                <Route
-          path="/menu"
-          element={
-            <CategoryMenu
-              user={user}
-              categories={categoriesRef.current}
-              activeCat={activeCat}
-              setActiveCat={setActiveCat}
+        ) : (
+          <>
+            <Route
+              path="/menu"
+              element={
+                <CategoryMenu
+                  user={user}
+                  categories={categoriesRef.current}
+                  activeCat={activeCat}
+                  setActiveCat={setActiveCat}
+                />
+              }
             />
-          }
-        />
-        <Route
-          path="/menu/:categoryId"
-          element={
-            <MenuListItem
-              menuItems={menuItems.filter(
-                (item) => item.category.name === activeCat
-              )}
+            <Route
+              path="/menu/:categoryId"
+              element={
+                <MenuListItem
+                  menuItems={menuItems.filter(
+                    (item) => item.category.name === activeCat
+                  )}
+                />
+              }
             />
-          }
-        />
-       </> )}
-       
-        
+          </>
+        )}
 
         {/* <Route
               path="/menu/:categoryId/:itemId"
               element={<MenuItemDetail />}
             /> */}
-        
       </Routes>
     </div>
   );

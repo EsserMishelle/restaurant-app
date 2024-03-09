@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getById } from "../../utilities/items-api";
 import * as ordersAPI from "../../utilities/orders-api";
-function MenuItemDetail({ item }) {
+
+function MenuItemDetail({ item, onClose }) {
   const { itemId } = useParams();
   const navigate = useNavigate();
   const [item, setItem] = useState(null);
@@ -37,11 +38,14 @@ function MenuItemDetail({ item }) {
         {item.description && <h3> {item.description}</h3>}
         <p>Pirce: {item.price}</p>
         {item.img && (
-          <img
-            src={item.img}
-            alt={item.name}
-            style={{ maxWidth: "100%", height: "auto" }}
-          />
+          <>
+            <img
+              src={item.img}
+              alt={item.name}
+              style={{ maxWidth: "100%", height: "auto" }}
+            />
+            <button onClick={onclose}>Close</button>
+          </>
         )}
       </div>
       <button onClick={handleAddToOrder}>Add to Cart</button>

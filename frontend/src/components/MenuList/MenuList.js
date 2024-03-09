@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./MenuList.module.css";
 
 import MenuItemModal from "../Modal/MenuItemModal";
-import MenuItemDetails from "../../pages/Menu/MenuItemDetails";
+import MenuItemDetail from "../../pages/Menu/MenuItemDetail";
 
 // import { Link } from "react-router-dom";
 
@@ -52,7 +52,7 @@ export default function MenuList({ menuItems, handleAddToOrder }) {
     <main className={styles.MenuList}>
       {items}
       <MenuItemModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        {selectedItem && <MenuItemDetails item={selectedItem} />}
+        {selectedItem && <MenuItemDetail item={selectedItem} />}
       </MenuItemModal>
     </main>
   );
