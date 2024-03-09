@@ -1,16 +1,14 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
-// import { useParams, useNavigate } from "react-router-dom";
+
 import { useNavigate } from "react-router-dom";
 import { getById } from "../../utilities/items-api";
 import * as ordersAPI from "../../utilities/orders-api";
 
 function MenuItemDetail({ item, onClose }) {
-  // const { itemId } = useParams();
   const navigate = useNavigate();
   // const [item, setItem] = useState(null);
   const [cart, setCart] = useState(null);
-  // const [itemDetails, setItemDetails] = useState(null);
 
   // async function handleAddToOrder() {
   //   const updatedCart = await ordersAPI.addItemToCart(itemId);
@@ -59,7 +57,7 @@ function MenuItemDetail({ item, onClose }) {
           </>
         )}
       </div>
-      {/* <button onClick={handleAddToOrder}>Add to Cart</button> */}
+
       <button onClick={handleBackToMenu}>Back to Menu</button>
     </div>
   );

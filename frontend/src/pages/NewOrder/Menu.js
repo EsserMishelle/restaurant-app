@@ -41,6 +41,7 @@ function Menu() {
             style={{ cursor: "pointer" }}
           >
             {item.name} - {item.price}
+            HELLO
           </li>
         ))}
       </ul>
