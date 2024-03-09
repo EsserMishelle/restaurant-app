@@ -5,12 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { getById } from "../../utilities/items-api";
 import * as ordersAPI from "../../utilities/orders-api";
 
-function MenuItemDetail({ item, onClose }) {
+function MenuItemDetail({ item, onClose, itemId }) {
   // const { itemId } = useParams();
   const navigate = useNavigate();
   // const [item, setItem] = useState(null);
   const [cart, setCart] = useState(null);
-  // const [itemDetails, setItemDetails] = useState(null);
 
   // async function handleAddToOrder() {
   //   const updatedCart = await ordersAPI.addItemToCart(itemId);
@@ -38,8 +37,12 @@ function MenuItemDetail({ item, onClose }) {
     return <div>No menu item found</div>;
   }
 
-  function handleBackToMenu() {
-    navigate("/menu");
+  // function handleBackToMenu() {
+  //   navigate("/menu");
+  // }
+  async function handleAddToOrder(itemId) {
+    const updatedCart = await ordersAPI.addItemToCart(itemId);
+    setCart(updatedCart);
   }
 
   return (
@@ -65,6 +68,7 @@ function MenuItemDetail({ item, onClose }) {
       >
         Back to Menu
       </button> */}
+      <button onClick={{ handleAddToOrder }}>Add to Cart </button>
     </div>
   );
 }
