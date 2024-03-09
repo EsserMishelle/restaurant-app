@@ -3,6 +3,7 @@ import { getAll } from "../../utilities/items-api";
 import { Link } from "react-router-dom";
 import Modal from "../../components/Modal/MenuItemModal";
 import MenuItemDetails from "./MenuItemDetails";
+import MenuItemDetail from "./MenuItemDetails";
 
 function Menu() {
   // State to store the fetched items
@@ -43,7 +44,8 @@ function Menu() {
         ))}
       </ul>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        {selectedItem && (
+        {/* updated by Mishelle */}
+        {/* {selectedItem && (
           <div>
             <h2>{selectedItem.name}</h2>
             <p>Description: {selectedItem.description}</p>
@@ -54,7 +56,8 @@ function Menu() {
               style={{ maxWidth: "100%", height: "auto" }}
             />
           </div>
-        )}
+        )} */}
+        {selectedItem && <MenuItemDetail item={selectedItem} />}
       </Modal>
     </div>
   );

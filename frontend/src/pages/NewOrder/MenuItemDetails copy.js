@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getById } from "../../utilities/items-api";
 import * as ordersAPI from "../../utilities/orders-api";
-function MenuItemDetail({ item }) {
+function MenuItemDetail() {
   const { itemId } = useParams();
   const navigate = useNavigate();
   const [item, setItem] = useState(null);
@@ -32,18 +32,16 @@ function MenuItemDetail({ item }) {
   }
   return (
     <div>
-      <div>
-        <h1>{item.name}</h1>
-        {item.description && <h3> {item.description}</h3>}
-        <p>Pirce: {item.price}</p>
-        {item.img && (
-          <img
-            src={item.img}
-            alt={item.name}
-            style={{ maxWidth: "100%", height: "auto" }}
-          />
-        )}
-      </div>
+      <h1>{item.name}</h1>
+      {item.description && <h3> {item.description}</h3>}
+      <p>Pirce: {item.price}</p>
+      {item.img && (
+        <img
+          src={item.img}
+          alt={item.name}
+          style={{ maxWidth: "100%", height: "auto" }}
+        />
+      )}
       <button onClick={handleAddToOrder}>Add to Cart</button>
       <button onClick={handleBackToMenu}>Back to Menu</button>
     </div>
