@@ -1,4 +1,5 @@
-export default function Modal({ isOpen, onClose, children }) {
+// export default function Modal({ isOpen, onClose, children }) {
+export default function Modal({ isOpen, children }) {
   if (!isOpen) return null;
 
   return (
@@ -16,9 +17,8 @@ export default function Modal({ isOpen, onClose, children }) {
       }}
     >
       <div style={{ backgroundColor: "#fff", padding: 20 }}>
-        <button onClick={onClose} style={{ height: "20px" }}>
-          X
-        </button>
+        {/* <button onClick={onClose} style={{ height: "30px", width: "30px" }}> */}
+        <button style={{ height: "30px", width: "30px" }}>X</button>
         {children}
       </div>
     </div>
