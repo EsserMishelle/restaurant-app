@@ -58,13 +58,13 @@ function MenuItemDetail({ item, onClose }) {
           </>
         )}
       </div>
-      {/* <button onClick={handleAddToOrder}>Add to Cart</button> */}
-      <button
+
+      {/* <button
         onClick={handleBackToMenu}
         style={{ height: "20px", width: "30px" }}
       >
         Back to Menu
-      </button>
+      </button> */}
     </div>
   );
 }
