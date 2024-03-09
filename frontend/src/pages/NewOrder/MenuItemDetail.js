@@ -16,18 +16,24 @@ function MenuItemDetail({ item: propItem, onClose }) {
     setCart(updatedCart);
   }
   useEffect(() => {
+    if (!itemId) {
+      console.error("itemId is undefined");
+      return;
+    }
     const fetchItem = async () => {
       try {
         console.log(`Fetching item with ID: ${itemId}`);
         const fetchedItem = await getById(itemId);
-        // console.log("Fetched item:", fetchedItem);
+
         setItemDetails(fetchedItem);
       } catch (error) {
         console.error("Error fetching menu item details:", error);
       }
     };
-    if (!propItem) fetchItem(); // Only fetch if propItem isn't provided
-  }, [itemId, propItem]);
+    fetchItem();
+  }, [itemId]);
+  //   if (!propItem) fetchItem();
+  // }, [itemId, propItem]);
 
   function handleBackToMenu() {
     navigate("/menu");
