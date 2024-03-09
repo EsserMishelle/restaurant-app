@@ -5,7 +5,6 @@ import UserLogOut from "../UserLogOut/UserLogOut";
 export default function Nav({ user, setUser }) {
   return (
     <nav className={styles.nav}>
-      
       <Link className={styles.logo} to="/">
         Home - 拉面时光
       </Link>
@@ -16,14 +15,17 @@ export default function Nav({ user, setUser }) {
 
       {user ? (
         <>
-          <div className={styles.helloDiv}>Hello, {user.name}!{" "}</div>
+          <div className={styles.helloDiv}>Hello, {user.name}! </div>
           <UserLogOut className={styles.links2} user={user} setUser={setUser} />
           <Link className={styles.links3} to="/orders/new">
             Order
           </Link>
-          {user.role === 'admin' && (
+          {user.role === "admin" && (
             <>
-              <Link className={styles.links6} to="/admin">Admin Dashboard</Link> &nbsp; | &nbsp;
+              <Link className={styles.links6} to="/admin">
+                Admin Dashboard
+              </Link>{" "}
+              &nbsp; | &nbsp;
             </>
           )}
         </>
