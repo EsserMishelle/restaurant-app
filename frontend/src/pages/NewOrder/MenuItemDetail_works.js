@@ -10,6 +10,7 @@ function MenuItemDetail({ item, onClose }) {
   const navigate = useNavigate();
   // const [item, setItem] = useState(null);
   const [cart, setCart] = useState(null);
+  // const [itemDetails, setItemDetails] = useState(null);
 
   // async function handleAddToOrder() {
   //   const updatedCart = await ordersAPI.addItemToCart(itemId);
@@ -40,10 +41,6 @@ function MenuItemDetail({ item, onClose }) {
   function handleBackToMenu() {
     navigate("/menu");
   }
-  async function handleAddToOrder(itemId) {
-    const updatedCart = await ordersAPI.addItemToCart(itemId);
-    setCart(updatedCart);
-  }
 
   return (
     <div>
@@ -68,7 +65,6 @@ function MenuItemDetail({ item, onClose }) {
       >
         Back to Menu
       </button> */}
-      <button onClick={{ handleAddToOrder }}>Add to Cart </button>
     </div>
   );
 }
