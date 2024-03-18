@@ -17,6 +17,14 @@ import OrderHistory from "./pages/OrderHistory/OrderHistory";
 import AdminDash from "./pages/AdminDash/AdminDash";
 import Footer from "./components/Footer/Footer";
 import About from "./pages/About/About";
+import Checkout from "./pages/Checkout/Checkout";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(
+  "pk_test_51OtVCPBP8wvWkrAEHfVexd95Uhkg2BwR6b7v5FZ2FBKuZ1b5cUTrCMWrG0X0mxxl0Ia65Cl2S1yxDUOjEJTumm9A00DzUIJYp2"
+);
+
 function App() {
   const [user, setUser] = useState(getUser());
   const [activeCat, setActiveCat] = useState("");
@@ -62,6 +70,7 @@ function App() {
               path="/orders"
               element={<OrderHistory user={user} setUser={setUser} />}
             />
+
             <Route path="/*" element={<Navigate to="/orders/new" />} />
           </>
         ) : user && user.role === "admin" ? (
@@ -97,6 +106,14 @@ function App() {
             <Route
               path="/orders/new"
               element={<NewOrder user={user} setUser={setUser} />}
+            />
+            <Route
+              path="/checkout"
+              element={
+                <Elements stripe={stripePromise}>
+                  <Checkout />
+                </Elements>
+              }
             />
           </>
         )}

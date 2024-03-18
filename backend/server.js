@@ -1,6 +1,8 @@
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
+const Stripe = require("stripe");
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 require("dotenv").config();
 //connect to the database
 require("./config/database");
@@ -51,6 +53,39 @@ app.get("/health", (req, res) => {
     res.status(500).send("API is up but MongoDB is disconnected.");
   }
 });
+
+//post a stripe payment
+app.post("/pay", async (req, res) => {
+  try {
+    const amount = 20;
+    const paymentIntent = await stripe.paymentIntent.create({
+      amount,
+      currency: "usd",
+      payment_method_types: ["card"],
+      metadata: {
+        name: "value",
+      },
+    });
+    const clientSecret = paymentIntent.client_secret;
+    res.json({ clientSecret, message: "Payment initiated successfully!" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "internal server error" });
+  }
+});
+//post stripe---only checking data
+app.post("/stripe", (req, res) => {
+  if (req.body.type === "payment_intent.created") {
+    console.log(`${req.body.data.object.metadata.name} initated payment}`);
+  }
+  if (req.body.type === "payment_intent.created") {
+    console.log(`${req.body.data.object.metadata.name} initated payment}`);
+  }
+  if (req.body.type === "payment_intent.succeeded") {
+    console.log(`${req.body.data.object.metadata.name} successful payment}`); //fulfillment
+  }
+});
+
 console.log("After API routes");
 
 console.log("Before catch-all route"); // Add this line
